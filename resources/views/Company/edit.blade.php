@@ -25,7 +25,7 @@
               <label for="inputEmail4" class="form-label">Logo Image</label>
               <input type="file" class="form-control" id="logo" name="logo">
               @if(!empty($data['company'])&& $data['company']->logo_image_name)
-              <img src="{{asset('images/profile_images/'.$data['company']->logo_image_name)}}" alt="logo">
+              <img src="{{asset('images/logo/'.$data['company']->logo_image_name)}}" alt="logo">
               @endif
             </div>
             <div class="text-center">

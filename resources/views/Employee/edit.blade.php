@@ -24,11 +24,11 @@
             </div>
             <div class="col-md-3">
               <label for="inputEmail4" class="form-label">Email</label>
-              <input type="email" class="form-control" value="{{$data['employee']->email}}" id="email" name="email" required>
+              <input type="email" class="form-control" required value="{{$data['employee']->email}}" id="email" name="email" required>
             </div>
             <div class="col-md-3">
               <label for="" class="form-label"> Company</label>
-              <select name="company_id" id="" class="form-control">
+              <select name="company_id" id="" class="form-control" required>
                 <option value="">Select Company</option>
                 @foreach($data['companies'] as $company)
                 <option value="{{$company->id}}" {{$data['employee']->company_id==$company->id?'selected':''}}>{{$company->name}}</option>

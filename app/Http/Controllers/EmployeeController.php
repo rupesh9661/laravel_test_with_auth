@@ -16,7 +16,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees= Employee::paginate(10);
+        $employees= Employee::with('Company')->paginate(10);
         return view('Employee.index', compact('employees'));
     }
 
@@ -39,6 +39,12 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required|max:10',
+            'company_id'=>'required'
+        ]);
         $result= Employee::create([
             "name"=>$request->name,
             "email"=>$request->email,
@@ -76,6 +82,12 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required|max:10',
+            'company_id'=>'required'
+        ]);
         $update_arr=[
             "name"=>$request->name,
             "email"=>$request->email,

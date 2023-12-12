@@ -7,7 +7,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
       <li class="breadcrumb-item">Employees</li>
-    
+
     </ol>
   </nav>
 </div><!-- End Page Title -->
@@ -24,11 +24,12 @@
           <table class="table table-bordered" style="width:100%">
             <thead>
               <tr>
-                <th >Id</th>
-                <th >Name</th>
-                <th >Phone</th>
-                <th >Email</th>
-                <th >Action</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Company</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -41,12 +42,13 @@
                 <td>{{$employee->name}}</td>
                 <td>{{$employee->phone}}</td>
                 <td>{{$employee->email}}</td>
+                <td>{{$employee->Company?$employee->Company->name:'--'}}</td>
                 <td>
                   <a href="{{route('employee.edit', $encrypted_id)}}" title="edit"><i class="ri-pencil-fill"></i></a>
-                <form action="{{route('employee.destroy', $encrypted_id)}}" method="POST">
-                  @method('delete')
-                  @csrf
-                  <button type="submit"><i class="ri-delete-bin-line text-danger" title="delete"></i></button>
+                  <form action="{{route('employee.destroy', $encrypted_id)}}" method="POST">
+                    @method('delete')
+                    @csrf
+                    <button type="submit"><i class="ri-delete-bin-line text-danger" title="delete"></i></button>
                   </form>
                 </td>
               </tr>

@@ -18,11 +18,11 @@
             </div>
             <div class="col-md-4">
               <label for="inputEmail4" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name="email">
+              <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="col-md-4">
               <label for="inputEmail4" class="form-label">Logo Image</label>
-              <input type="file" class="form-control" id="logo" name="logo">
+              <input type="file" class="form-control" id="logo" name="logo" required>
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Submit</button>

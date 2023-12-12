@@ -37,6 +37,11 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'logo' => 'required'
+        ]);
         if ($request->file('logo')) {
             $image = $request->file('logo');
             $img_name = $image->getClientOriginalName();
@@ -78,6 +83,10 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required'
+        ]);
         $update_arr=[
             "name"=>$request->name,
             "email"=>$request->email
@@ -106,6 +115,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
+       try{
         $decrypted_id=Crypt::decrypt($id);
         $result= Company::destroy($decrypted_id);
         if($result){
@@ -113,5 +123,8 @@ class CompanyController extends Controller
         }else{
             return redirect('company')->with('failure', 'something went wrong unable to delete data');
         }
+       }catch(\Exception $e){
+        return redirect('company')->with('failure', $e->getMessage());
+       }
     }
 }
